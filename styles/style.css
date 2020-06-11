@@ -1,0 +1,49 @@
+#board {
+  width: 480px;
+  height: 480px;
+  background-color: limegreen;
+}
+
+.row {
+  width: 480px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+}
+
+.square {
+  width: 58px;
+  height: 58px;
+  border: solid 1px;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.disc {
+  width: 52px;
+  height: 52px;
+  border: solid 2px;
+  margin: 1px;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.disc.possible {
+  width: 8px;
+  height: 8px;
+  border: 0px;
+  margin: 25px;
+}
+
+.disc.none {
+  border: 0px;
+}
+
+.disc.white {
+  background-color: white;
+}
+
+.disc.black {
+  background-color: black;
+}
