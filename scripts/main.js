@@ -122,6 +122,7 @@ function computerPlay() {
 // playerが(x, y)に石を置けるとき、置く
 function tryPutDisc(x, y) {
     if(!isPlaceable(x, y, playerTurn)) return;
+    
     displayMessage('');
     putDisc(x, y, playerTurn);
     reflectDiscsView();
@@ -137,11 +138,23 @@ function tryPutDisc(x, y) {
             displayPlacableSquares(playerTurn);
         }
     }
-    else if (playerTurn === computerColor) {
-        computerPlay();
-        playerTurn = opponentPlayerNum(playerTurn);
-        reflectDiscsView();
-        displayPlacableSquares(playerTurn);
+    if(playerTurn === computerColor) {
+        const opponent = opponentPlayerNum(computerColor);
+        if(isPlaceableAll(computerColor)){
+            do{
+                computerPlay();
+                reflectDiscsView();
+            } while(!isPlaceableAll(opponent) && isPlaceableAll(computerColor));
+            if(isPlaceableAll(opponent)) {
+                playerTurn = opponent;
+                reflectDiscsView();
+                displayPlacableSquares(playerTurn);
+            }
+            else {
+                displayResult();
+            }
+        }
+        return ;
     }
 }
 
